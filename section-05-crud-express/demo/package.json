@@ -1,0 +1,35 @@
+{
+  "name": "section-05-demo",
+  "version": "1.0.0",
+  "description": "TypeORM CRUD with Express - Section 05 Demo",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev --respawn src/index.ts",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:generate": "npm run typeorm -- migration:generate -d src/data-source.ts",
+    "migration:run": "npm run typeorm -- migration:run -d src/data-source.ts",
+    "migration:revert": "npm run typeorm -- migration:revert -d src/data-source.ts",
+    "seed": "ts-node src/seeds/index.ts"
+  },
+  "dependencies": {
+    "class-transformer": "workspace:*",
+    "class-validator": "workspace:*",
+    "cors": "workspace:*",
+    "dotenv": "workspace:*",
+    "express": "workspace:*",
+    "helmet": "workspace:*",
+    "pg": "workspace:*",
+    "reflect-metadata": "workspace:*",
+    "typeorm": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "workspace:*",
+    "ts-node": "workspace:*",
+    "ts-node-dev": "workspace:*",
+    "typescript": "workspace:*"
+  }
+}

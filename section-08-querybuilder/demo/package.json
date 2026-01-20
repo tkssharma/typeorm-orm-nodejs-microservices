@@ -1,0 +1,22 @@
+{
+  "name": "section-08-demo",
+  "version": "1.0.0",
+  "description": "TypeORM QueryBuilder Demo - Section 08",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "dotenv": "workspace:*",
+    "pg": "workspace:*",
+    "reflect-metadata": "workspace:*",
+    "typeorm": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "workspace:*",
+    "ts-node": "workspace:*",
+    "typescript": "workspace:*"
+  }
+}

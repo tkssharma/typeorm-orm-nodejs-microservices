@@ -1,0 +1,11 @@
+packages:
+  - "section-02-setup/demo"
+  - "section-02-setup-express/demo"
+  - "section-03-entities/demo"
+  - "section-04-repositories/demo"
+  - "section-05-crud-express/demo"
+  - "section-07-relationships/demo"
+  - "section-08-querybuilder/demo"
+  - "section-10-nestjs/demo"
+  - "section-10-nodejs-typescript/demo"
+  - "section-11-transactions/demo"

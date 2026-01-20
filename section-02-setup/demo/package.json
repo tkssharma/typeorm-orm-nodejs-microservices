@@ -1,0 +1,39 @@
+{
+  "name": "section-02-demo",
+  "version": "1.0.0",
+  "description": "TypeORM Setup Demo - Section 02",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "dev:watch": "ts-node-dev --respawn src/index.ts",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:generate": "pnpm typeorm migration:generate -d src/data-source.ts",
+    "migration:create": "pnpm typeorm migration:create",
+    "migration:run": "pnpm typeorm migration:run -d src/data-source.ts",
+    "migration:revert": "pnpm typeorm migration:revert -d src/data-source.ts",
+    "migration:show": "pnpm typeorm migration:show -d src/data-source.ts",
+    "schema:sync": "pnpm typeorm schema:sync -d src/data-source.ts",
+    "schema:drop": "pnpm typeorm schema:drop -d src/data-source.ts"
+  },
+  "keywords": [
+    "typeorm",
+    "typescript",
+    "postgres"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "workspace:*",
+    "pg": "workspace:*",
+    "reflect-metadata": "workspace:*",
+    "typeorm": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "workspace:*",
+    "ts-node": "workspace:*",
+    "ts-node-dev": "workspace:*",
+    "typescript": "workspace:*"
+  }
+}
