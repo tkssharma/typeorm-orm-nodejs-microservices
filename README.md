@@ -201,7 +201,49 @@ typeorm-course/
 ├── section-14-testing/                # Testing strategies
 ├── section-15-capstone/               # Final project
 ├── section-16-deployment/             # Docker deployment
-└── bonus-section/                     # Comparisons and extras
+├── bonus-section/                     # Comparisons and extras
+└── examples/                          # Complete example applications
+    ├── express-typeorm-blog-app/      # Express + TypeORM Blog (migrations, relationships, transactions)
+    └── nestjs-typeorm-app/            # NestJS + TypeORM Blog
+```
+
+---
+
+## 🚀 Complete Example Applications
+
+### Express + TypeScript + TypeORM Blog App
+
+A comprehensive blog application demonstrating all TypeORM fundamentals:
+
+- **Entities**: Author, Post, Comment with relationships
+- **Migrations**: Complete migration setup with up/down methods
+- **Transactions**: Atomic operations for complex business logic
+- **Soft Deletes**: Post entity with soft delete support
+- **Query Builder**: Advanced queries in services
+
+```bash
+cd examples/express-typeorm-blog-app
+npm install
+cp .env.example .env
+npm run migration:run
+npm run dev
+```
+
+### NestJS + TypeORM Blog App
+
+The same blog application built with NestJS framework:
+
+- **Module-based architecture**: Users, Posts, Comments modules
+- **Dependency Injection**: Repository injection with @InjectRepository
+- **DTO Validation**: Request validation with class-validator
+- **Best Practices**: Production-ready NestJS patterns
+
+```bash
+cd examples/nestjs-typeorm-app
+npm install
+cp .env.example .env
+npm run migration:run
+npm run start:dev
 ```
 
 ---
