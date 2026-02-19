@@ -1,0 +1,163 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// ONE-TO-ONE RELATION
+// User has one Profile
+// ============================================
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // One-to-One (optional)
+  profile Profile?
+
+  // One-to-Many
+  posts    Post[]
+  comments Comment[]
+
+  // Many-to-Many (implicit via PostLike)
+  likedPosts PostLike[]
+
+  // Self-referencing (followers)
+  followers  Follow[] @relation("following")
+  following  Follow[] @relation("followers")
+}
+
+model Profile {
+  id        String   @id @default(uuid())
+  bio       String?
+  avatar    String?
+  website   String?
+  createdAt DateTime @default(now())
+
+  // Foreign key for One-to-One
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ============================================
+// ONE-TO-MANY RELATION
+// User has many Posts
+// ============================================
+
+model Post {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Foreign key
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  // One-to-Many (Post has many Comments)
+  comments Comment[]
+
+  // Many-to-Many with explicit join table
+  tags  PostTag[]
+  likes PostLike[]
+
+  @@index([authorId])
+}
+
+// ============================================
+// ONE-TO-MANY RELATION
+// Post has many Comments
+// ============================================
+
+model Comment {
+  id        String   @id @default(uuid())
+  content   String
+  createdAt DateTime @default(now())
+
+  // Foreign keys
+  postId   String
+  post     Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  // Self-referencing for replies
+  parentId String?
+  parent   Comment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  replies  Comment[] @relation("CommentReplies")
+
+  @@index([postId])
+  @@index([authorId])
+}
+
+// ============================================
+// MANY-TO-MANY (Explicit Join Table)
+// Posts have many Tags, Tags have many Posts
+// ============================================
+
+model Tag {
+  id    String    @id @default(uuid())
+  name  String    @unique
+  posts PostTag[]
+}
+
+model PostTag {
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tagId     String
+  tag       Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@id([postId, tagId])
+}
+
+// ============================================
+// MANY-TO-MANY with extra fields
+// User likes Posts (with timestamp)
+// ============================================
+
+model PostLike {
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@id([userId, postId])
+}
+
+// ============================================
+// SELF-REFERENCING RELATION
+// User follows User
+// ============================================
+
+model Follow {
+  followerId  String
+  follower    User     @relation("followers", fields: [followerId], references: [id], onDelete: Cascade)
+  followingId String
+  following   User     @relation("following", fields: [followingId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+
+  @@id([followerId, followingId])
+}
+
+// ============================================
+// SELF-REFERENCING TREE STRUCTURE
+// Category hierarchy
+// ============================================
+
+model Category {
+  id       String     @id @default(uuid())
+  name     String
+  parentId String?
+  parent   Category?  @relation("CategoryTree", fields: [parentId], references: [id])
+  children Category[] @relation("CategoryTree")
+}

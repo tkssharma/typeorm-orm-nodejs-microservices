@@ -1,0 +1,159 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// ENUMS - Define allowed values for fields
+// ============================================
+
+enum Role {
+  USER
+  ADMIN
+  MODERATOR
+}
+
+enum Status {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+// ============================================
+// MODELS - Database tables
+// ============================================
+
+// User model with various field types and attributes
+model User {
+  id        String   @id @default(uuid()) // UUID primary key
+  email     String   @unique              // Unique constraint
+  username  String   @unique @db.VarChar(50)
+  name      String?                       // Optional field
+  age       Int?     @db.SmallInt
+  balance   Decimal? @db.Decimal(10, 2)   // Decimal with precision
+  isActive  Boolean  @default(true)
+  role      Role     @default(USER)       // Enum with default
+  metadata  Json?                         // JSON field
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt           // Auto-update timestamp
+
+  // Relations
+  profile Profile?
+  posts   Post[]
+  tasks   Task[]
+
+  // Indexes for performance
+  @@index([email])
+  @@index([role, isActive])
+  @@map("users") // Custom table name
+}
+
+// Profile - One-to-One with User
+model Profile {
+  id        String   @id @default(uuid())
+  bio       String?  @db.Text
+  avatar    String?
+  website   String?
+  birthDate DateTime?
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("profiles")
+}
+
+// Post - Demonstrates various data types
+model Post {
+  id          String   @id @default(cuid()) // CUID primary key
+  title       String   @db.VarChar(255)
+  slug        String   @unique
+  content     String   @db.Text
+  excerpt     String?  @db.VarChar(500)
+  status      Status   @default(DRAFT)
+  views       Int      @default(0)
+  likes       Int      @default(0)
+  rating      Float?
+  publishedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Foreign key
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id])
+
+  // Indexes
+  @@index([authorId])
+  @@index([status, publishedAt])
+  @@index([slug])
+  @@map("posts")
+}
+
+// Task - Composite unique and indexes
+model Task {
+  id          Int      @id @default(autoincrement()) // Auto-increment
+  title       String
+  description String?  @db.Text
+  priority    Priority @default(MEDIUM)
+  dueDate     DateTime?
+  completed   Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Foreign key
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  // Composite unique constraint
+  @@unique([userId, title])
+  @@index([userId, completed])
+  @@index([priority])
+  @@map("tasks")
+}
+
+// Product - Demonstrates Decimal and BigInt
+model Product {
+  id          String   @id @default(uuid())
+  sku         String   @unique
+  name        String
+  description String?  @db.Text
+  price       Decimal  @db.Decimal(10, 2)
+  cost        Decimal? @db.Decimal(10, 2)
+  quantity    Int      @default(0)
+  barcode     BigInt?  // For large numbers
+  weight      Float?
+  isAvailable Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([sku])
+  @@index([isAvailable, price])
+  @@map("products")
+}
+
+// AuditLog - Demonstrates Bytes and DateTime
+model AuditLog {
+  id        String   @id @default(uuid())
+  action    String
+  entity    String
+  entityId  String
+  oldData   Json?
+  newData   Json?
+  ipAddress String?
+  userAgent String?
+  timestamp DateTime @default(now())
+
+  @@index([entity, entityId])
+  @@index([timestamp])
+  @@map("audit_logs")
+}

@@ -9,3 +9,11 @@ packages:
   - "section-10-nestjs/demo"
   - "section-10-nodejs-typescript/demo"
   - "section-11-transactions/demo"
+  # Prisma ORM Sections
+  - "section-16-prisma-intro/demo"
+  - "section-17-prisma-schema/demo"
+  - "section-18-prisma-relations/demo"
+  - "section-19-prisma-client-crud/demo"
+  - "section-20-prisma-advanced-queries/demo"
+  - "section-21-prisma-migrations/demo"
+  - "section-22-prisma-backend-frameworks/demo"
