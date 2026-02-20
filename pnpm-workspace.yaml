@@ -4,6 +4,7 @@ packages:
   - "section-03-entities/demo"
   - "section-04-repositories/demo"
   - "section-05-crud-express/demo"
+  - "section-06-typeorm-cli/demo"
   - "section-07-relationships/demo"
   - "section-08-querybuilder/demo"
   - "section-10-nestjs/demo"

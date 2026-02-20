@@ -9,6 +9,7 @@
     "dev:03": "pnpm --filter section-03-demo dev",
     "dev:04": "pnpm --filter section-04-demo dev",
     "dev:05": "pnpm --filter section-05-demo dev",
+    "dev:06": "pnpm --filter section-06-typeorm-cli-demo dev",
     "dev:07": "pnpm --filter section-07-demo dev",
     "dev:08": "pnpm --filter section-08-demo dev",
     "dev:10": "pnpm --filter section-10-demo dev",

@@ -1,0 +1,31 @@
+{
+  "name": "section-06-typeorm-cli-demo",
+  "version": "1.0.0",
+  "description": "TypeORM CLI Demo - Section 06",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:create": "pnpm typeorm migration:create",
+    "migration:generate": "pnpm typeorm migration:generate -d src/data-source.ts",
+    "migration:run": "pnpm typeorm migration:run -d src/data-source.ts",
+    "migration:revert": "pnpm typeorm migration:revert -d src/data-source.ts",
+    "migration:show": "pnpm typeorm migration:show -d src/data-source.ts",
+    "schema:sync": "pnpm typeorm schema:sync -d src/data-source.ts",
+    "schema:drop": "pnpm typeorm schema:drop -d src/data-source.ts",
+    "schema:log": "pnpm typeorm schema:log -d src/data-source.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.3",
+    "reflect-metadata": "^0.2.1",
+    "typeorm": "^0.3.20"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
