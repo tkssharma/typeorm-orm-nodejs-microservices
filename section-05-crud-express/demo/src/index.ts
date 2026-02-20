@@ -30,21 +30,4 @@ async function main() {
   }
 }
 
-// Graceful shutdown
-process.on("SIGINT", async () => {
-  console.log("\n🛑 Shutting down...");
-  if (AppDataSource.isInitialized) {
-    await AppDataSource.destroy();
-    console.log("✅ Database connection closed");
-  }
-  process.exit(0);
-});
-
-process.on("SIGTERM", async () => {
-  if (AppDataSource.isInitialized) {
-    await AppDataSource.destroy();
-  }
-  process.exit(0);
-});
-
 main();

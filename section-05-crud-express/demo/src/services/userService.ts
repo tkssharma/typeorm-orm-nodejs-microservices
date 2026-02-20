@@ -4,60 +4,7 @@ import { CreateUserDto, UpdateUserDto, PaginatedResponse } from "../dto/user.dto
 import { Like, ILike } from "typeorm";
 
 const userRepository = AppDataSource.getRepository(User);
-
-interface FindAllParams {
-  page?: number;
-  limit?: number;
-  search?: string;
-  isActive?: boolean;
-  sortBy?: string;
-  sortOrder?: "ASC" | "DESC";
-}
-
 export class UserService {
-  async findAll(params: FindAllParams): Promise<PaginatedResponse<User>> {
-    const {
-      page = 1,
-      limit = 10,
-      search,
-      isActive,
-      sortBy = "createdAt",
-      sortOrder = "DESC",
-    } = params;
-
-    const queryBuilder = userRepository.createQueryBuilder("user");
-
-    // Search filter
-    if (search) {
-      queryBuilder.andWhere(
-        "(user.firstName ILIKE :search OR user.lastName ILIKE :search OR user.email ILIKE :search)",
-        { search: `%${search}%` }
-      );
-    }
-
-    // Active filter
-    if (isActive !== undefined) {
-      queryBuilder.andWhere("user.isActive = :isActive", { isActive });
-    }
-
-    // Sorting
-    queryBuilder.orderBy(`user.${sortBy}`, sortOrder);
-
-    // Pagination
-    queryBuilder.skip((page - 1) * limit).take(limit);
-
-    const [users, total] = await queryBuilder.getManyAndCount();
-
-    return {
-      data: users,
-      meta: {
-        total,
-        page,
-        limit,
-        totalPages: Math.ceil(total / limit),
-      },
-    };
-  }
 
   async findById(id: number): Promise<User | null> {
     return userRepository.findOneBy({ id });

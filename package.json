@@ -5,6 +5,7 @@
   "description": "TypeORM Course with TypeScript and Node.js - Monorepo",
   "scripts": {
     "dev:02": "pnpm --filter section-02-demo dev",
+    "dev:02-build": "pnpm --filter section-02-demo build",
     "dev:02-express": "pnpm --filter section-02-express-demo dev",
     "dev:03": "pnpm --filter section-03-demo dev",
     "dev:04": "pnpm --filter section-04-demo dev",

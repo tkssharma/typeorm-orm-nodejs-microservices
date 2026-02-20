@@ -1,115 +1,232 @@
-# Node.js ORM Mastery - Udemy Course Content
+# Node.js ORM Mastery - TypeORM & Prisma
+
+## Course Overview
+
+Master database operations in Node.js with TypeORM and Prisma - the two most popular ORMs in the ecosystem. This hands-on course takes you from fundamentals to advanced patterns with real-world demos.
 
 ---
 
-## Course Title
+## Part 1: TypeORM (Sections 01-15)
 
-Complete Node.js ORM Mastery: Prisma, TypeORM, Knex, Sequelize & MongoDB
+### Section 01: Introduction to ORMs and TypeORM
 
----
+- What is an ORM and why use it?
+- TypeORM features and architecture
+- Active Record vs Data Mapper patterns
+- TypeORM vs raw SQL - when to use which
+- Core concepts: DataSource, Entity, Repository, Migration, QueryBuilder
 
-## Course Subtitle
+### Section 02: Project Setup and Configuration
 
-Master database management in Node.js with hands-on projects using Prisma, TypeORM, Knex.js, Sequelize ORM, and MongoDB/Mongoose - Build production-ready applications
+- Node.js + TypeScript project setup
+- Installing TypeORM and PostgreSQL driver
+- DataSource configuration options
+- Environment variables and .env setup
+- Graceful shutdown handling
+- Express.js integration basics
 
----
+### Section 03: Entities, Columns, and Decorators
 
-## Course Description
+- Creating entities with @Entity decorator
+- Column types (varchar, text, int, decimal, boolean, json, uuid, arrays)
+- Column options (nullable, unique, default, select, length)
+- Primary columns (@PrimaryGeneratedColumn, @PrimaryColumn, composite keys)
+- Special columns (@CreateDateColumn, @UpdateDateColumn, @DeleteDateColumn, @VersionColumn)
+- Enum columns with TypeScript enums
+- Column transformers for data modification
+- Entity inheritance (Single Table, Concrete Table, Embedded Entities)
 
-Are you ready to become a database expert in the Node.js ecosystem?
+### Section 04: Repositories and Data Access
 
-This comprehensive course takes you from beginner to advanced level in working with databases using Node.js. You'll master the five most popular ORMs and database tools used in modern Node.js development: Prisma, TypeORM, Knex.js, Sequelize, and MongoDB with Mongoose.
+- Repository pattern in TypeORM
+- Built-in repository methods (find, findOne, save, remove, count)
+- Custom repositories
+- Repository vs EntityManager
+- Query options (where, order, relations, select, skip, take)
 
- Why This Course?
+### Section 05: CRUD Operations with Express
 
-In today's backend development landscape, choosing the right ORM can make or break your project. Each ORM has its strengths, use cases, and trade-offs. This course gives you hands-on experience with ALL major options so you can:
+- Building REST APIs with Express + TypeORM
+- Create, Read, Update, Delete operations
+- Error handling and validation
+- Request/Response patterns
+- Middleware integration
 
-- Make informed decisions about which ORM fits your project
-- Switch between ORMs confidently in different job roles
-- Understand the underlying concepts that apply across all database tools
-- Build production-ready applications with best practices
+### Section 06: TypeORM CLI
 
- What Makes This Course Different?
+- CLI setup and configuration
+- Migration commands (create, generate, run, revert, show)
+- Schema commands (sync, drop, log)
+- Entity generation
+- Cache management
+- Best practices for migrations
 
- Practical, Project-Based Learning - Every concept is demonstrated with real code examples  
- Comparison Approach - See how the same operations work across different ORMs  
- Production Patterns - Learn migrations, transactions, relationships, and optimization  
- Modern Stack - TypeScript, Express, NestJS integration included  
- SQL & NoSQL - Cover both relational databases and MongoDB
+### Section 07: Relationships
 
- Course Structure
+- One-to-One relationships (@OneToOne, @JoinColumn)
+- One-to-Many / Many-to-One relationships
+- Many-to-Many relationships (@ManyToMany, @JoinTable)
+- Bi-directional vs uni-directional relations
+- Eager vs lazy loading
+- Cascade operations
+- Self-referencing relationships
 
-Part 1: TypeORM
+### Section 08: QueryBuilder
 
-- Setup and configuration with TypeScript
-- Entities, repositories, and data mapper pattern
-- Relations (One-to-One, One-to-Many, Many-to-Many)
-- QueryBuilder for complex queries
-- Migrations and schema management
-- Transactions and error handling
-- Integration with Express and NestJS
+- Creating queries with QueryBuilder
+- SELECT, WHERE, ORDER BY, GROUP BY
+- Joins (inner, left, right)
+- Subqueries
+- Raw SQL expressions
+- Pagination with skip/take
+- Complex filtering and conditions
 
-Part 2: Prisma
+### Section 09: Soft Deletes
 
-- Prisma schema and data modeling
-- Prisma Client and type-safe queries
-- Relations and nested operations
-- Migrations with Prisma Migrate
-- Prisma Studio for database management
-- Advanced filtering and pagination
+- Implementing soft delete pattern
+- @DeleteDateColumn usage
+- Querying soft-deleted records
+- Restoring deleted records
 
-Part 3: Sequelize
+### Section 10: Framework Integration
 
-- Model definitions and validations
-- Associations and eager loading
-- Raw queries and transactions
-- Hooks and lifecycle events
-- CLI tools and migrations
+- TypeORM with Express.js (full API)
+- TypeORM with NestJS (@nestjs/typeorm)
+- Node.js + TypeScript best practices
+- Database seeding strategies
 
-Part 4: Knex.js
+### Section 11: Transactions
 
-- Query builder fundamentals
-- Schema building and migrations
-- Raw SQL when needed
+- Understanding database transactions
+- Transaction methods in TypeORM
+- queryRunner transactions
+- @Transaction decorator
+- Error handling in transactions
+- Isolation levels
+
+### Section 12: Performance Optimization
+
+- Query optimization techniques
+- Indexing strategies
 - Connection pooling
-- Integration patterns
+- Lazy vs eager loading trade-offs
+- N+1 query problem solutions
 
-Part 5: MongoDB & Mongoose
+### Section 13: Advanced Patterns
 
-- Document modeling with schemas
-- CRUD operations
-- Relationships (embedding vs referencing)
-- Aggregation pipeline
-- Indexing and performance
-- Mongoose middleware and virtuals
+- Custom naming strategies
+- Subscribers and listeners
+- Entity lifecycle hooks
+- Database views
+- Raw queries
 
- Technologies Covered
+### Section 14: Testing
 
-- Node.js & TypeScript
-- PostgreSQL & MySQL
-- MongoDB
-- Express.js & NestJS
-- Docker for database setup
+- Unit testing repositories
+- Integration testing with test database
+- Mocking TypeORM
+- Test fixtures and factories
+
+### Section 15: Deployment
+
+- Production configuration
+- Environment-based settings
+- SSL connections
+- Migration strategies for production
 
 ---
+
+## Part 2: Prisma ORM (Sections 16-22)
+
+### Section 16: Prisma Introduction & Setup
+
+- What is Prisma and why use it?
+- Prisma vs TypeORM comparison
+- Prisma architecture (Client, Engine, Schema)
+- Setting up Prisma with Node.js + TypeScript
+- Prisma CLI commands (init, generate, db push, migrate, studio, format)
+
+### Section 17: Prisma Schema & Data Modeling
+
+- Schema file structure (datasource, generator, model)
+- Field types and modifiers
+- Default values and auto-generation
+- Enums in Prisma
+- Indexes and constraints (@id, @unique, @@index, @@unique)
+- Field attributes (@default, @map, @relation, @updatedAt)
+
+### Section 18: Prisma Relations
+
+- One-to-One relations
+- One-to-Many relations
+- Many-to-Many relations (implicit and explicit)
+- Self-relations
+- Relation fields and foreign keys
+- Referential actions (onDelete, onUpdate)
+
+### Section 19: Prisma Client & CRUD Operations
+
+- Generating and using Prisma Client
+- Create operations (create, createMany)
+- Read operations (findUnique, findFirst, findMany)
+- Update operations (update, updateMany, upsert)
+- Delete operations (delete, deleteMany)
+- Filtering, sorting, and pagination
+- Select and include for field selection
+
+### Section 20: Prisma Advanced Queries
+
+- Aggregations (count, sum, avg, min, max)
+- Grouping with groupBy
+- Nested writes and transactions
+- Raw SQL queries ($queryRaw, $executeRaw)
+- Complex filtering (AND, OR, NOT, contains, startsWith)
+- Cursor-based pagination
+
+### Section 21: Prisma Migrations
+
+- Creating migrations (prisma migrate dev)
+- Applying migrations (prisma migrate deploy)
+- Migration history and rollback
+- Database seeding with prisma db seed
+- Prisma Studio for visual editing
+- Schema introspection (prisma db pull)
+
+### Section 22: Prisma with Backend Frameworks
+
+- Prisma + Express.js REST API
+- Prisma Client singleton pattern
+- Error handling
+- Request validation
+- API route organization
+- Production considerations
+
+---
+
+## Technologies Covered
+
+- **Runtime**: Node.js 18+
+- **Language**: TypeScript
+- **ORMs**: TypeORM, Prisma
+- **Database**: PostgreSQL
+- **Frameworks**: Express.js, NestJS
+- **Tools**: Docker, pnpm, Prisma Studio
 
 ## Who Should Join This Course
 
- This course is perfect for:
+👨‍💻 **Backend Developers** - Master database operations in Node.js
 
-👨‍💻 Backend Developers who want to master database operations in Node.js
+👩‍💻 **Full-Stack Developers** - Strengthen backend skills with production patterns
 
-👩‍💻 Full-Stack Developers looking to strengthen their backend skills
+🎓 **Students & Beginners** - Comprehensive introduction to ORMs
 
-🎓 Students & Beginners who want a comprehensive introduction to ORMs
+💼 **Job Seekers** - Prepare for Node.js backend interviews
 
-💼 Professionals preparing for Node.js backend interviews
+🔄 **Developers Switching Stacks** - Coming from other languages to Node.js
 
-🔄 Developers Switching Stacks from other languages to Node.js
+📈 **Team Leads** - Evaluate and choose ORMs for projects
 
-📈 Team Leads & Architects who need to evaluate and choose ORMs for projects
-
- Prerequisites:
+### Prerequisites
 
 - Basic JavaScript/TypeScript knowledge
 - Familiarity with Node.js fundamentals
@@ -120,94 +237,81 @@ Part 5: MongoDB & Mongoose
 
 ## What You Will Learn
 
-By the end of this course, you will be able to:
+### Core Skills
 
- Core Skills
+- ✅ Set up and configure TypeORM and Prisma in Node.js projects
+- ✅ Design database schemas using code-first and schema-first approaches
+- ✅ Perform CRUD operations with type-safe queries
+- ✅ Model complex relationships (One-to-One, One-to-Many, Many-to-Many)
+- ✅ Write advanced queries using QueryBuilder and raw SQL
+- ✅ Manage database migrations for safe schema evolution
+- ✅ Handle transactions for data integrity
+- ✅ Optimize performance with indexing and connection pooling
 
- Set up and configure Prisma, TypeORM, Sequelize, Knex, and Mongoose in Node.js projects
+### Practical Applications
 
- Design database schemas using different ORM approaches (code-first, schema-first)
+- 🚀 Build REST APIs with Express.js + TypeORM/Prisma
+- 🚀 Create NestJS applications with @nestjs/typeorm
+- 🚀 Implement user authentication with relations
+- 🚀 Design e-commerce data models
+- 🚀 Use CLI tools for migrations and schema management
 
- Perform CRUD operations efficiently with type-safe queries
+### Professional Skills
 
- Model complex relationships - One-to-One, One-to-Many, Many-to-Many
-
- Write advanced queries using QueryBuilders and raw SQL when needed
-
- Manage database migrations for safe schema evolution
-
- Handle transactions for data integrity in critical operations
-
- Optimize performance with proper indexing, eager/lazy loading, and connection pooling
-
- Practical Applications
-
- Build REST APIs with Express.js and TypeORM/Prisma
-
- Create NestJS applications with integrated TypeORM modules
-
- Implement authentication systems with user entities and relations
-
- Design e-commerce data models with products, orders, and customers
-
- Handle file uploads and store metadata in databases
-
- Professional Skills
-
- Choose the right ORM for different project requirements
-
- Debug database issues and optimize slow queries
-
- Write clean, maintainable data access code
-
- Follow best practices for production deployments
-
- Understand trade-offs between different ORMs
+- 💼 Choose the right ORM for your project
+- 💼 Debug database issues and optimize queries
+- 💼 Write clean, maintainable data access code
+- 💼 Follow production deployment best practices
 
 ---
 
-## Course Highlights (Bullet Points for Udemy)
+## Course Highlights
 
-- Master 5 popular Node.js ORMs: Prisma, TypeORM, Sequelize, Knex.js, and Mongoose
-- Build real-world projects with PostgreSQL, MySQL, and MongoDB
-- Learn TypeScript integration for type-safe database operations
-- Understand migrations, transactions, and relationship modeling
-- Create REST APIs with Express.js and NestJS
-- Compare ORMs side-by-side to make informed technology choices
+- Master TypeORM and Prisma - the two most popular Node.js ORMs
+- Build real-world projects with PostgreSQL
+- TypeScript integration for type-safe database operations
+- Migrations, transactions, and relationship modeling
+- REST APIs with Express.js and NestJS
+- Compare ORMs to make informed technology choices
 - Production-ready patterns and best practices
-- Hands-on coding exercises with downloadable source code
+- Hands-on demos with downloadable source code
 
 ---
 
-## Target Keywords for Udemy SEO
+## Estimated Course Length
 
-- Node.js ORM
-- Prisma tutorial
-- TypeORM course
-- Sequelize Node.js
-- Knex.js tutorial
-- MongoDB Mongoose
-- Node.js database
-- TypeScript ORM
-- NestJS TypeORM
-- Node.js backend development
+| Part        | Section        | Duration        |
+| ----------- | -------------- | --------------- |
+| **TypeORM** | Sections 01-15 | 10-12 hours     |
+| **Prisma**  | Sections 16-22 | 6-8 hours       |
+| **Total**   |                | **16-20 hours** |
 
 ---
 
-## Suggested Course Length
+## Demo Projects Included
 
-- Total Duration: 25-35 hours
-- TypeORM Section: 8-10 hours
-- Prisma Section: 6-8 hours
-- Sequelize Section: 4-5 hours
-- Knex.js Section: 3-4 hours
-- MongoDB/Mongoose Section: 5-6 hours
+Each section includes working demo projects:
 
----
+```
+section-XX/
+├── README.md          # Topics and learning objectives
+└── demo/
+    ├── package.json
+    ├── tsconfig.json
+    ├── .env.example
+    ├── prisma/          # (Prisma sections)
+    │   └── schema.prisma
+    └── src/
+        ├── data-source.ts  # (TypeORM sections)
+        ├── entities/
+        └── index.ts
+```
 
-## Promotional Taglines
+### Running Demos
 
-1. "One course to master ALL Node.js ORMs - Prisma, TypeORM, Sequelize, Knex & MongoDB"
-2. "Stop guessing which ORM to use - Learn them all and choose wisely"
-3. "From zero to database expert in Node.js - Complete ORM mastery"
-4. "The only Node.js database course you'll ever need"
+```bash
+cd section-XX/demo
+cp .env.example .env
+pnpm install
+pnpm dev
+```

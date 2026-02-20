@@ -6,7 +6,6 @@ import { CreateUserDto, UpdateUserDto } from "../dto/user.dto";
 const router = Router();
 
 // GET /api/users - Get all users (paginated)
-router.get("/", (req, res, next) => userController.getAll(req, res, next));
 
 // GET /api/users/:id - Get user by ID
 router.get("/:id", (req, res, next) => userController.getById(req, res, next));

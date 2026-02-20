@@ -2,30 +2,6 @@ import { Request, Response, NextFunction } from "express";
 import { userService } from "../services/userService";
 
 export class UserController {
-  async getAll(req: Request, res: Response, next: NextFunction) {
-    try {
-      const page = parseInt(req.query.page as string) || 1;
-      const limit = parseInt(req.query.limit as string) || 10;
-      const search = req.query.search as string | undefined;
-      const isActive = req.query.isActive === "true" ? true :
-        req.query.isActive === "false" ? false : undefined;
-      const sortBy = (req.query.sortBy as string) || "createdAt";
-      const sortOrder = (req.query.sortOrder as "ASC" | "DESC") || "DESC";
-
-      const result = await userService.findAll({
-        page,
-        limit,
-        search,
-        isActive,
-        sortBy,
-        sortOrder,
-      });
-
-      res.json(result);
-    } catch (error) {
-      next(error);
-    }
-  }
 
   async getById(req: Request, res: Response, next: NextFunction) {
     try {
