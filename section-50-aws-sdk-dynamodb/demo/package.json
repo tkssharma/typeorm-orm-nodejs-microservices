@@ -1,0 +1,25 @@
+{
+  "name": "aws-sdk-dynamodb-demo",
+  "version": "1.0.0",
+  "description": "AWS SDK v3 DynamoDB Client - CRUD, Query, Scan operations",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "setup": "ts-node src/setup-table.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.485.0",
+    "@aws-sdk/lib-dynamodb": "^3.485.0",
+    "@aws-sdk/util-dynamodb": "^3.485.0",
+    "dotenv": "^16.3.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/uuid": "^9.0.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

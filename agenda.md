@@ -203,14 +203,218 @@ Master database operations in Node.js with TypeORM and Prisma - the two most pop
 
 ---
 
+## Part 3: MongoDB with Node.js (Sections 30-46)
+
+### Section 30: Course Introduction
+
+- Welcome & Course Goals
+- What You Will Build
+- How MongoDB Fits in Modern Backends
+- Tools & Setup (Node.js, MongoDB, Compass)
+
+### Section 31: MongoDB Fundamentals
+
+- What is MongoDB & NoSQL
+- MongoDB vs SQL (Quick Comparison)
+- Documents, Collections & BSON
+- MongoDB Atlas Overview
+- Using MongoDB Compass
+- Basic CRUD Operations
+
+### Section 32: Connecting MongoDB with Node.js
+
+- MongoDB Node.js Driver
+- Connection Strings & Environment Variables
+- Handling Connection Errors
+- Project Structure for MongoDB APIs
+
+### Section 33: Mongoose Essentials
+
+- Why Mongoose (ODM benefits)
+- Defining Schemas & Models
+- Data Types & Validation
+- Default Values & Timestamps
+- CRUD Operations using Mongoose
+- Query Helpers
+
+### Section 34: Schema Design & Data Modeling
+
+- Designing Schemas for Real Apps
+- Embedded vs Referenced Documents
+- One-to-One, One-to-Many, Many-to-Many Relationships
+- Handling Large Collections
+
+### Section 35: Advanced MongoDB Queries
+
+- Filtering & Projections
+- Sorting & Pagination
+- Population & Joins ($lookup)
+- Aggregation Framework
+- Text Search & Geospatial Queries
+
+### Section 36: Indexing & Performance
+
+- How Indexes Work
+- Single Field & Compound Indexes
+- Unique & Text Indexes
+- Query Performance Analysis
+- When Indexes Hurt Performance
+
+### Section 37: Validation & Data Integrity
+
+- Mongoose vs MongoDB Validation
+- Custom Validators
+- Schema-Level vs Database-Level Rules
+- Handling Invalid Data Safely
+
+### Section 38: Authentication Data Modeling
+
+- User Schema Design
+- Password Hashing
+- Storing Tokens Securely
+- Session vs Token-Based Auth
+- MongoDB for Auth Systems
+
+### Section 39: Transactions & Consistency
+
+- What are Transactions in MongoDB
+- Multi-Document Transactions
+- ACID in MongoDB
+- When to Use Transactions
+- Performance Tradeoffs
+
+### Section 40: MongoDB Aggregation Mastery
+
+- Aggregation Pipeline Deep Dive
+- $match, $group, $project
+- $lookup with Real Data
+- $unwind & $facet
+- Analytics & Reporting Queries
+
+### Section 41: Soft Deletes, Auditing & Versioning
+
+- Soft Delete Patterns
+- Audit Fields (createdBy, updatedBy)
+- Versioning Documents
+- Data Recovery Strategies
+
+### Section 42: Security Best Practices
+
+- Preventing NoSQL Injection
+- Secure Connection Strings
+- Role-Based Database Access
+- Data Encryption at Rest & Transit
+
+### Section 43: Scaling MongoDB Applications
+
+- Connection Pooling
+- MongoDB Atlas Scaling
+- Replica Sets Explained
+- Sharding Basics
+- Handling High-Traffic APIs
+
+### Section 44: Production Setup
+
+- Environment-Based Configs
+- MongoDB Atlas in Production
+- Backup & Restore
+- Monitoring Queries & Performance
+
+### Section 45: Real-World MongoDB Project
+
+- Production-grade E-Commerce API
+- Advanced schema design
+- Complex aggregations
+- Indexing & performance tuning
+- Transactions & secure data handling
+
+### Section 46: Common Mistakes & Interview Prep
+
+- MongoDB Design Mistakes
+- Performance Pitfalls
+- Real MongoDB Interview Questions
+- How Companies Use MongoDB
+
+---
+
+## Part 4: Amazon DynamoDB (Sections 47-53)
+
+### Section 47: Course Introduction - DynamoDB
+
+- Welcome to DynamoDB Course
+- What You Will Build
+- When to Use DynamoDB (and When Not To)
+- DynamoDB vs MongoDB vs SQL
+- Course Roadmap & Expectations
+
+### Section 48: DynamoDB Fundamentals (Core Focus)
+
+- What is DynamoDB
+- Fully Managed NoSQL Explained
+- Tables, Items & Attributes
+- Primary Keys: Partition Key & Sort Key
+- Data Types in DynamoDB
+- Strong vs Eventual Consistency
+
+### Section 49: DynamoDB Table Design Basics
+
+- Access Pattern–Driven Design
+- Designing with Queries in Mind
+- Hot Partitions Explained
+- Choosing Partition Keys
+- Sort Keys for Range Queries
+- Single Table vs Multi Table Design
+
+### Section 50: AWS DynamoDB Client (AWS SDK v3)
+
+- AWS SDK v3 Overview
+- Setting Up Credentials Securely
+- DynamoDBClient vs DynamoDBDocumentClient
+- PutItem, GetItem, UpdateItem, DeleteItem
+- Query vs Scan (Critical Difference)
+- Handling Pagination
+- Error Handling Best Practices
+
+### Section 51: Nova ODM Essentials
+
+- What is Nova ODM and Why Use It
+- Defining Models & Schemas
+- Attribute Types & Defaults
+- CRUD Operations with Nova
+- Querying Data with Nova
+- Model-Level Validation
+
+### Section 52: Advanced Query Patterns
+
+- Querying with Partition + Sort Keys
+- Begins_with & Between Queries
+- Conditional Writes
+- Filtering vs Key Conditions
+- Efficient Pagination
+- Atomic Updates & Counters
+- Avoiding Scans
+
+### Section 53: Secondary Indexes (GSIs & LSIs)
+
+- Why Secondary Indexes Exist
+- Global Secondary Indexes (GSI)
+- Local Secondary Indexes (LSI)
+- Designing GSIs for New Access Patterns
+- GSI Performance & Cost Tradeoffs
+- Sparse Index Pattern
+- Overloaded GSI Pattern
+
+---
+
 ## Technologies Covered
 
 - **Runtime**: Node.js 18+
 - **Language**: TypeScript
-- **ORMs**: TypeORM, Prisma
-- **Database**: PostgreSQL
+- **ORMs/ODMs**: TypeORM, Prisma, Mongoose, Nova ODM
+- **Databases**: PostgreSQL, MongoDB, Amazon DynamoDB
 - **Frameworks**: Express.js, NestJS
-- **Tools**: Docker, pnpm, Prisma Studio
+- **Cloud**: AWS SDK v3, DynamoDB Local
+- **Tools**: Docker, pnpm, Prisma Studio, MongoDB Compass, MongoDB Atlas, DynamoDB Admin
 
 ## Who Should Join This Course
 
@@ -280,11 +484,13 @@ Master database operations in Node.js with TypeORM and Prisma - the two most pop
 
 ## Estimated Course Length
 
-| Part        | Section        | Duration        |
-| ----------- | -------------- | --------------- |
-| **TypeORM** | Sections 01-15 | 10-12 hours     |
-| **Prisma**  | Sections 16-22 | 6-8 hours       |
-| **Total**   |                | **16-20 hours** |
+| Part         | Section        | Duration        |
+| ------------ | -------------- | --------------- |
+| **TypeORM**  | Sections 01-15 | 10-12 hours     |
+| **Prisma**   | Sections 16-22 | 6-8 hours       |
+| **MongoDB**  | Sections 30-46 | 12-15 hours     |
+| **DynamoDB** | Sections 47-53 | 6-8 hours       |
+| **Total**    |                | **34-43 hours** |
 
 ---
 

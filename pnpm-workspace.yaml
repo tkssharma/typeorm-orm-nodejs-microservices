@@ -18,3 +18,15 @@ packages:
   - "section-20-prisma-advanced-queries/demo"
   - "section-21-prisma-migrations/demo"
   - "section-22-prisma-backend-frameworks/demo"
+  # MongoDB with Node.js Sections
+  - "section-31-mongodb-fundamentals/demo"
+  - "section-33-mongoose-essentials/demo"
+  - "section-34-schema-design/demo"
+  - "section-35-advanced-queries/demo"
+  - "section-36-indexing-performance/demo"
+  - "section-38-auth-data-modeling/demo"
+  - "section-39-transactions/demo"
+  - "section-40-aggregation-mastery/demo"
+  - "section-41-soft-deletes-auditing/demo"
+  # DynamoDB with Node.js Sections
+  - "section-50-aws-sdk-dynamodb/demo"

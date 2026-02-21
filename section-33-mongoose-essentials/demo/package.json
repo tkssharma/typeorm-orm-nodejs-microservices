@@ -1,0 +1,22 @@
+{
+  "name": "mongoose-essentials-demo",
+  "version": "1.0.0",
+  "description": "Mongoose essentials demo - schemas, models, CRUD",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "keywords": ["mongoose", "mongodb", "nodejs"],
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "mongoose": "^8.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

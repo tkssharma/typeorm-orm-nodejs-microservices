@@ -1,0 +1,22 @@
+{
+  "name": "mongodb-fundamentals-demo",
+  "version": "1.0.0",
+  "description": "MongoDB fundamentals - CRUD operations with native driver",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "keywords": ["mongodb", "nodejs", "crud"],
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "mongodb": "^6.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
