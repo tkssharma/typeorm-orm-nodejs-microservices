@@ -136,7 +136,7 @@ Master database operations in Node.js with TypeORM and Prisma - the two most pop
 
 ---
 
-## Part 2: Prisma ORM (Sections 16-22)
+## Part 2: Prisma ORM (Sections 16-29)
 
 ### Section 16: Prisma Introduction & Setup
 
@@ -200,6 +200,74 @@ Master database operations in Node.js with TypeORM and Prisma - the two most pop
 - Request validation
 - API route organization
 - Production considerations
+
+### Section 23: Prisma Client Advanced Patterns
+
+- Prisma Client deep dive
+- Advanced query patterns (nested reads, fluent API)
+- Interactive transactions
+- Raw SQL queries ($queryRaw, $executeRaw)
+- Middleware and client extensions
+- Optimistic concurrency control
+- Connection pooling and performance
+
+### Section 24: Prisma Migrations Deep Dive
+
+- Development vs production migrations
+- Migration file anatomy
+- Schema introspection (db pull)
+- Handling breaking changes
+- Data migrations with SQL
+- Database seeding strategies
+- Baselining existing databases
+- Multi-environment migration strategy
+
+### Section 25: Prisma with SQLite
+
+- SQLite setup with Prisma
+- SQLite-specific limitations
+- Testing with in-memory SQLite
+- JSON storage patterns
+- Full-text search with FTS5
+- Backup and restore strategies
+
+### Section 26: Prisma Multi-Database Strategies
+
+- Multiple Prisma clients
+- Read replica pattern
+- Multi-tenant database per tenant
+- Schema-based multi-tenancy
+- Cross-database joins (application level)
+- Connection management for multiple databases
+
+### Section 27: Prisma Edge & Serverless
+
+- Serverless challenges (cold starts, connections)
+- AWS Lambda with Prisma
+- Connection pooling with PgBouncer
+- Prisma Accelerate for edge
+- Vercel Edge Functions
+- Cloudflare Workers integration
+
+### Section 28: Prisma Testing Strategies
+
+- Unit testing with mocked Prisma
+- Integration testing with test database
+- Test fixtures and factories
+- Testing transactions
+- E2E testing with Supertest
+
+### Section 29: Prisma Production Best Practices
+
+- Production configuration
+- Secure database connections (SSL)
+- Connection pooling settings
+- Health checks
+- Graceful shutdown
+- Error handling patterns
+- Logging and monitoring
+- Migration strategies for CI/CD
+- Backup and recovery
 
 ---
 
@@ -337,7 +405,7 @@ Master database operations in Node.js with TypeORM and Prisma - the two most pop
 
 ---
 
-## Part 4: Amazon DynamoDB (Sections 47-53)
+## Part 4: Amazon DynamoDB (Sections 47-58)
 
 ### Section 47: Course Introduction - DynamoDB
 
@@ -403,6 +471,57 @@ Master database operations in Node.js with TypeORM and Prisma - the two most pop
 - GSI Performance & Cost Tradeoffs
 - Sparse Index Pattern
 - Overloaded GSI Pattern
+
+### Section 54: Single Table Design
+
+- What is Single Table Design
+- Entity prefixes and key patterns
+- Implementing single table design
+- CRUD operations with mixed entities
+- GSI design for access patterns
+- Adjacency list pattern
+- When NOT to use single table design
+
+### Section 55: DynamoDB Transactions & Batch Operations
+
+- TransactWriteItems (ACID writes)
+- TransactGetItems (consistent reads)
+- Batch operations vs transactions
+- Idempotency with client tokens
+- Optimistic locking pattern
+- Saga pattern for complex workflows
+- Cost and performance considerations
+
+### Section 56: DynamoDB Streams & Events
+
+- Change data capture (CDC)
+- Stream record types and views
+- Lambda stream processor
+- Event sourcing pattern
+- Cross-region replication
+- Analytics pipeline integration
+- Error handling and retry strategies
+
+### Section 57: DynamoDB with Serverless & Lambda
+
+- Serverless Framework configuration
+- Lambda handlers for DynamoDB
+- Cold start optimization
+- API Gateway request validation
+- Local development with serverless-offline
+- Testing Lambda functions
+- Deployment and CI/CD
+
+### Section 58: DynamoDB Production & Cost Optimization
+
+- Capacity planning (on-demand vs provisioned)
+- Auto-scaling configuration
+- Cost optimization strategies
+- Monitoring and CloudWatch alerts
+- Error handling and retry
+- Backup and recovery (PITR)
+- Security best practices
+- Global tables for multi-region
 
 ---
 
@@ -487,10 +606,10 @@ Master database operations in Node.js with TypeORM and Prisma - the two most pop
 | Part         | Section        | Duration        |
 | ------------ | -------------- | --------------- |
 | **TypeORM**  | Sections 01-15 | 10-12 hours     |
-| **Prisma**   | Sections 16-22 | 6-8 hours       |
+| **Prisma**   | Sections 16-29 | 10-12 hours     |
 | **MongoDB**  | Sections 30-46 | 12-15 hours     |
-| **DynamoDB** | Sections 47-53 | 6-8 hours       |
-| **Total**    |                | **34-43 hours** |
+| **DynamoDB** | Sections 47-58 | 10-12 hours     |
+| **Total**    |                | **42-51 hours** |
 
 ---
 
