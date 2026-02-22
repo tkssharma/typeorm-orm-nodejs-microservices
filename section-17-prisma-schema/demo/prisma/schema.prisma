@@ -37,16 +37,16 @@ enum Priority {
 // User model with various field types and attributes
 model User {
   id        String   @id @default(uuid()) // UUID primary key
-  email     String   @unique              // Unique constraint
+  email     String   @unique // Unique constraint
   username  String   @unique @db.VarChar(50)
-  name      String?                       // Optional field
+  name      String? // Optional field
   age       Int?     @db.SmallInt
-  balance   Decimal? @db.Decimal(10, 2)   // Decimal with precision
+  balance   Decimal? @db.Decimal(10, 2) // Decimal with precision
   isActive  Boolean  @default(true)
-  role      Role     @default(USER)       // Enum with default
-  metadata  Json?                         // JSON field
+  role      Role     @default(USER) // Enum with default
+  metadata  Json? // JSON field
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt           // Auto-update timestamp
+  updatedAt DateTime @updatedAt // Auto-update timestamp
 
   // Relations
   profile Profile?
@@ -61,31 +61,31 @@ model User {
 
 // Profile - One-to-One with User
 model Profile {
-  id        String   @id @default(uuid())
-  bio       String?  @db.Text
+  id        String    @id @default(uuid())
+  bio       String?   @db.Text
   avatar    String?
   website   String?
   birthDate DateTime?
-  userId    String   @unique
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String    @unique
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("profiles")
 }
 
 // Post - Demonstrates various data types
 model Post {
-  id          String   @id @default(cuid()) // CUID primary key
-  title       String   @db.VarChar(255)
-  slug        String   @unique
-  content     String   @db.Text
-  excerpt     String?  @db.VarChar(500)
-  status      Status   @default(DRAFT)
-  views       Int      @default(0)
-  likes       Int      @default(0)
+  id          String    @id @default(cuid()) // CUID primary key
+  title       String    @db.VarChar(255)
+  slug        String    @unique
+  content     String    @db.Text
+  excerpt     String?   @db.VarChar(500)
+  status      Status    @default(DRAFT)
+  views       Int       @default(0)
+  likes       Int       @default(0)
   rating      Float?
   publishedAt DateTime?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   // Foreign key
   authorId String
@@ -100,15 +100,15 @@ model Post {
 
 // Task - Composite unique and indexes
 model Task {
-  id          Int      @id @default(autoincrement()) // Auto-increment
+  id          Int       @id @default(autoincrement()) // Auto-increment
   title       String
-  description String?  @db.Text
-  priority    Priority @default(MEDIUM)
+  description String?   @db.Text
+  priority    Priority  @default(MEDIUM)
   dueDate     DateTime?
-  completed   Boolean  @default(false)
-  order       Int      @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  completed   Boolean   @default(false)
+  order       Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   // Foreign key
   userId String
@@ -130,7 +130,7 @@ model Product {
   price       Decimal  @db.Decimal(10, 2)
   cost        Decimal? @db.Decimal(10, 2)
   quantity    Int      @default(0)
-  barcode     BigInt?  // For large numbers
+  barcode     BigInt? // For large numbers
   weight      Float?
   isAvailable Boolean  @default(true)
   createdAt   DateTime @default(now())

@@ -65,3 +65,16 @@ model Category {
 
   @@index([slug])
 }
+
+model post1 {
+  id    String @id @default(uuid())
+  name  String @unique
+  slug  String @unique
+}
+
+
+model post2 {
+  id    String @id @default(uuid())
+  name  String @unique
+  slug  String @unique
+}

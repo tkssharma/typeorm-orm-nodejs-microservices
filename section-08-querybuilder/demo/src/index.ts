@@ -13,8 +13,8 @@ async function main() {
     const postRepo = AppDataSource.getRepository(Post);
 
     // Clean and seed data
-    await postRepo.delete({});
-    await userRepo.delete({});
+    await postRepo.createQueryBuilder().delete().from(Post).execute();
+    await userRepo.createQueryBuilder().delete().from(User).execute();
 
     // Create test users
     const users = await userRepo.save([
@@ -49,6 +49,7 @@ async function main() {
     const activeUsers = await userRepo
       .createQueryBuilder("user")
       .where("user.isActive = :active", { active: true })
+      .orderBy("user.createdAt", "DESC")
       .getMany();
     console.log("Active users:", activeUsers.length);
 

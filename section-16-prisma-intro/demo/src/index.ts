@@ -1,5 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 
+console.log('Starting Prisma demo...');
+
 // Initialize Prisma Client
 const prisma = new PrismaClient({
   log: ['query', 'info', 'warn', 'error'],
@@ -16,7 +18,13 @@ async function main() {
       name: 'John Doe',
     },
   });
-  console.log('Created user:', user);
+
+  const course = await prisma.course.create({
+    data: {
+      name: 'John Doe',
+    },
+  });
+  console.log('Created course:', course);
 
   // 2. Read all users
   console.log('\n📖 Reading all users...');
