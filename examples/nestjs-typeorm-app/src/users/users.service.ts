@@ -1,15 +1,21 @@
 import { Injectable, NotFoundException, ConflictException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { UserCreatedEvent } from './events/user-created.event';
+import * as bcrypt from 'bcryptjs';
+
+const SALT_ROUNDS = 10;
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
+    private readonly eventEmitter: EventEmitter2,
   ) { }
 
   async findAll(): Promise<User[]> {
@@ -36,6 +42,13 @@ export class UsersService {
     return this.userRepository.findOneBy({ email });
   }
 
+  async findByEmailWithPassword(email: string): Promise<User | null> {
+    return this.userRepository.findOne({
+      where: { email },
+      select: ['id', 'firstName', 'lastName', 'email', 'password', 'role', 'isActive'],
+    });
+  }
+
   async create(createUserDto: CreateUserDto): Promise<User> {
     // Check if email already exists
     const existingUser = await this.findByEmail(createUserDto.email);
@@ -44,7 +57,14 @@ export class UsersService {
     }
 
     const user = this.userRepository.create(createUserDto);
-    return this.userRepository.save(user);
+    const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
+    user.password = hashedPassword;
+    const savedUser = await this.userRepository.save(user);
+
+
+    this.eventEmitter.emit('user.created', new UserCreatedEvent(savedUser));
+
+    return savedUser;
   }
 
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {

@@ -6,34 +6,47 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from 'typeorm';
+import { Exclude } from 'class-transformer';
 import { Post } from '../posts/post.entity';
+import { Review } from '../reviews/review.entity';
+import { Role } from './enums/role.enum';
 
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column({ type: 'varchar', length: 100 })
-  firstName: string;
+  firstName!: string;
 
   @Column({ type: 'varchar', length: 100 })
-  lastName: string;
+  lastName!: string;
 
   @Column({ type: 'varchar', length: 255, unique: true })
-  email: string;
+  email!: string;
+
+  @Exclude()
+  @Column({ type: 'varchar', length: 255, select: false })
+  password!: string;
 
   @Column({ type: 'text', nullable: true })
-  bio: string;
+  bio!: string;
+
+  @Column({ type: 'enum', enum: Role, default: Role.USER })
+  role!: Role;
 
   @Column({ type: 'boolean', default: true })
-  isActive: boolean;
+  isActive!: boolean;
 
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn()
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @OneToMany(() => Post, (post) => post.author)
-  posts: Post[];
+  posts!: Post[];
+
+  @OneToMany(() => Review, (review) => review.user)
+  reviews!: Review[];
 }

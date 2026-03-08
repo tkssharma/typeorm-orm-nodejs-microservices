@@ -65,11 +65,12 @@ export class PostsService {
     return post;
   }
 
-  async create(createPostDto: CreatePostDto): Promise<Post> {
+  async   create(createPostDto: CreatePostDto, authorId: number): Promise<Post> {
     const slug = this.generateSlug(createPostDto.title);
     const post = this.postRepository.create({
       ...createPostDto,
       slug,
+      authorId,
     });
     return this.postRepository.save(post);
   }

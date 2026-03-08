@@ -11,6 +11,7 @@ import {
 } from 'typeorm';
 import { User } from '../users/user.entity';
 import { Comment } from '../comments/comment.entity';
+import { Review } from '../reviews/review.entity';
 
 export enum PostStatus {
   DRAFT = 'draft',
@@ -21,49 +22,55 @@ export enum PostStatus {
 @Entity('posts')
 export class Post {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column({ type: 'varchar', length: 255 })
-  title: string;
+  title!: string;
 
   @Column({ type: 'varchar', length: 300, unique: true })
-  slug: string;
+  slug!: string;
 
   @Column({ type: 'text', nullable: true })
-  excerpt: string;
+  excerpt!: string;
 
   @Column({ type: 'text' })
-  content: string;
+  content!: string;
+
+  @Column({ type: 'text' })
+  description!: string;
 
   @Column({
     type: 'enum',
     enum: PostStatus,
     default: PostStatus.DRAFT,
   })
-  status: PostStatus;
+  status!: PostStatus;
 
   @Column({ type: 'timestamp', nullable: true })
-  publishedAt: Date | null;
+  publishedAt!: Date | null;
 
   @Column({ type: 'int', default: 0 })
-  viewCount: number;
+  viewCount!: number;
 
   @Column()
-  authorId: number;
+  authorId!: number;
 
   @ManyToOne(() => User, (user) => user.posts, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'authorId' })
-  author: User;
+  author!: User;
 
   @OneToMany(() => Comment, (comment) => comment.post)
-  comments: Comment[];
+  comments!: Comment[];
+
+  @OneToMany(() => Review, (review) => review.post)
+  reviews!: Review[];
 
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn()
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @DeleteDateColumn()
-  deletedAt: Date | null;
+  deletedAt!: Date | null;
 }

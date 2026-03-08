@@ -1,4 +1,4 @@
-import { IsString, IsOptional, MaxLength, MinLength, IsEnum } from 'class-validator';
+import { IsString, IsOptional, MaxLength, MinLength, IsEnum, IsNumber, IsDefined } from 'class-validator';
 import { PostStatus } from '../post.entity';
 
 export class UpdatePostDto {
@@ -21,4 +21,12 @@ export class UpdatePostDto {
   @IsOptional()
   @IsEnum(PostStatus)
   status?: PostStatus;
+}
+
+
+export class UpdatePostByIdDto {
+
+  @IsNumber()
+  @IsDefined()
+  id!: number;
 }

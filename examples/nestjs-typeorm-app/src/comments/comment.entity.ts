@@ -13,43 +13,42 @@ import { Post } from '../posts/post.entity';
 @Entity('comments')
 export class Comment {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column({ type: 'varchar', length: 100 })
-  authorName: string;
+  authorName!: string;
 
   @Column({ type: 'varchar', length: 255 })
-  authorEmail: string;
+  authorEmail!: string;
 
   @Column({ type: 'text' })
-  content: string;
+  content!: string;
 
   @Column({ type: 'boolean', default: false })
-  isApproved: boolean;
+  isApproved!: boolean;
 
   @Column()
-  postId: number;
+  postId!: number;
 
   @ManyToOne(() => Post, (post) => post.comments, { onDelete: 'CASCADE' })
-  @JoinColumn({ name: 'postId' })
-  post: Post;
+  post!: Post;
 
   @Column({ type: 'int', nullable: true })
-  parentId: number | null;
+  parentId!: number | null;
 
   @ManyToOne(() => Comment, (comment) => comment.replies, {
     onDelete: 'CASCADE',
     nullable: true,
   })
   @JoinColumn({ name: 'parentId' })
-  parent: Comment | null;
+  parent!: Comment | null;
 
   @OneToMany(() => Comment, (comment) => comment.parent)
-  replies: Comment[];
+  replies!: Comment[];
 
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn()
-  updatedAt: Date;
+  updatedAt!: Date;
 }

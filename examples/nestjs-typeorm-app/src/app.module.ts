@@ -1,9 +1,13 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { CommentsModule } from './comments/comments.module';
+import { NotificationsModule } from './notifications/notifications.module';
+import { ReviewsModule } from './reviews/reviews.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -26,14 +30,20 @@ import { CommentsModule } from './comments/comments.module';
         database: configService.get<string>('DB_DATABASE', 'nestjs_blog'),
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: false, // Always false in production - use migrations
-        logging: configService.get<string>('NODE_ENV') !== 'production',
+        logging: true,
       }),
     }),
+
+    // Event Emitter
+    EventEmitterModule.forRoot(),
 
     // Feature modules
     UsersModule,
     PostsModule,
     CommentsModule,
+    NotificationsModule,
+    ReviewsModule,
+    AuthModule,
   ],
 })
 export class AppModule { }
